@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="منوی دیجیتال آبمیوه و بستنی آیس لند آبمیوه‌های تازه‌فشرده، اسموتی و شیک، بستنی سنتی و ژلاتو، فالوده و نوشیدنی‌های ملس.">
+<meta name="theme-color" content="#2ec5f5">
+<title>منوی دیجیتال آبمیوه و بستنی آیس لند | تازه، طبیعی و خنک</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ice:#2ec5f5;
+    --ice-soft:#7ee3ff;
+    --ice-light:#d9f4ff;
+    --glacier:#a7f0ff;
+    --ice-deep:#0a7fb8;
+    --mint:#2ad0bd;
+    --mint-soft:#e3fbf8;
+    --frost:#eefaff;
+    --snow:#ffffff;
+    --mist:#f5fbff;
+    --card:rgba(255,255,255,.86);
+    --ink:#0c2942;
+    --ink-muted:#587891;
+    --hairline:rgba(12,41,66,.12);
+    --glow:rgba(46,197,245,.38);
+    --radius:14px;
+    --pad:clamp(1rem,3vw,1.5rem);
+    --max:1080px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:"Vazirmatn",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:1rem;
+    line-height:1.75;
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 520px at 100% 0%, rgba(126,227,255,.30), transparent 62%),
+      radial-gradient(900px 500px at 0% 12%, rgba(167,240,255,.28), transparent 60%),
+      radial-gradient(700px 420px at 50% 100%, rgba(217,244,255,.48), transparent 65%),
+      linear-gradient(180deg,var(--snow) 0%, var(--mist) 100%);
+    background-attachment:fixed;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---------- Header ---------- */
+  .hero{
+    position:relative;
+    text-align:center;
+    padding:clamp(2.25rem,6vw,3.75rem) var(--pad) clamp(1.75rem,4vw,2.5rem);
+    background:
+      radial-gradient(680px 340px at 50% -12%, rgba(126,227,255,.55) 0%, rgba(46,197,245,.18) 46%, rgba(46,197,245,0) 72%),
+      linear-gradient(180deg,rgba(255,255,255,.94) 0%, rgba(238,250,255,.88) 58%, var(--frost) 100%);
+    -webkit-backdrop-filter:blur(16px) saturate(150%);
+    backdrop-filter:blur(16px) saturate(150%);
+    border-bottom:1px solid rgba(12,41,66,.10);
+    box-shadow:0 18px 40px -28px rgba(10,127,184,.45);
+  }
+  .hero__brand{
+    margin:0;
+    font-weight:800;
+    font-size:clamp(1.75rem,6vw,3rem);
+    line-height:1.35;
+    letter-spacing:-.01em;
+    color:var(--ink);
+    text-shadow:0 1px 0 #fff, 0 10px 22px rgba(46,197,245,.18);
+  }
+  .hero__brand em{
+    font-style:normal;
+    color:var(--ice-deep);
+  }
+  .hero__rule{
+    width:min(240px,62%);
+    height:3px;
+    margin:1rem auto 1.1rem;
+    border:0;
+    border-radius:999px;
+    background:linear-gradient(90deg,rgba(46,197,245,0) 0%, var(--ice-soft) 20%, var(--glacier) 50%, var(--ice-soft) 80%, rgba(46,197,245,0) 100%);
+    box-shadow:0 0 14px rgba(46,197,245,.55);
+  }
+  .hero__tagline{
+    margin:0 auto;
+    max-width:48ch;
+    font-size:clamp(.95rem,2.6vw,1.05rem);
+    color:var(--ink-muted);
+  }
+  .hero__meta{
+    max-width:var(--max);
+    margin:1.25rem auto 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    justify-content:center;
+  }
+
+  /* ---------- Sticky filters ---------- */
+  .filters{
+    position:sticky;
+    top:0;
+    z-index:30;
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    justify-content:center;
+    padding:.65rem var(--pad);
+    background:rgba(255,255,255,.72);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    backdrop-filter:blur(18px) saturate(160%);
+    border-bottom:1px solid rgba(12,41,66,.10);
+    box-shadow:0 10px 26px -20px rgba(10,127,184,.55);
+    overflow-x:auto;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .filters::-webkit-scrollbar{display:none}
+  .filters a{
+    flex:0 0 auto;
+    padding:.5rem 1rem;
+    border-radius:999px;
+    border:1px solid rgba(46,197,245,.5);
+    background:linear-gradient(180deg,#ffffff 0%, var(--frost) 100%);
+    color:var(--ink);
+    font-size:.9rem;
+    font-weight:600;
+    text-decoration:none;
+    white-space:nowrap;
+    box-shadow:0 2px 8px -4px rgba(10,127,184,.35);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  }
+  .filters a:hover,
+  .filters a:focus-visible{
+    background:linear-gradient(180deg,#ffffff 0%, var(--ice-light) 100%);
+    border-color:var(--ice-deep);
+    box-shadow:0 8px 18px var(--glow);
+    transform:translateY(-1px);
+  }
+  .filters a:active{transform:translateY(0)}
+
+  /* ---------- Sections ---------- */
+  .section{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:clamp(1.75rem,5vw,2.75rem) var(--pad) 0;
+    scroll-margin-top:4.75rem;
+  }
+  .section__head{
+    padding-right:.75rem;
+    border-right:4px solid var(--ice);
+    border-radius:2px;
+  }
+  .section__title{
+    margin:0;
+    font-weight:800;
+    font-size:clamp(1.2rem,3.6vw,1.6rem);
+    line-height:1.5;
+    color:var(--ink);
+  }
+  .section__en{
+    margin:.15rem 0 0;
+    font-family:Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-size:.9rem;
+    letter-spacing:.04em;
+    color:var(--ice-deep);
+  }
+  .section__note{
+    margin:1.1rem 0 0;
+    padding:.7rem .9rem;
+    font-size:.88rem;
+    color:#0d6e65;
+    background:var(--mint-soft);
+    border:1px dashed rgba(42,208,189,.45);
+    border-radius:12px;
+    box-shadow:0 8px 20px -18px rgba(42,208,189,.7);
+  }
+
+  /* ---------- Items ---------- */
+  .items{
+    display:grid;
+    gap:.85rem;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    margin-top:1.15rem;
+  }
+  .item{
+    display:flex;
+    gap:.85rem;
+    padding:.85rem;
+    background:var(--card);
+    border:1px solid var(--hairline);
+    border-radius:var(--radius);
+    box-shadow:0 6px 18px -14px rgba(10,127,184,.55);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .item:hover{
+    transform:translateY(-2px);
+    border-color:rgba(46,197,245,.6);
+    box-shadow:0 14px 30px -18px var(--glow), 0 0 0 1px rgba(46,197,245,.18);
+  }
+  .item__media{
+    flex:0 0 84px;
+    width:84px;
+    height:84px;
+    margin:0;
+    border-radius:12px;
+    overflow:hidden;
+    background:linear-gradient(135deg,var(--ice-light),var(--mint-soft));
+  }
+  .item__media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .item__body{min-width:0;flex:1 1 auto}
+  .item__top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:.5rem;
+  }
+  .item__name{
+    margin:0;
+    font-size:1.02rem;
+    font-weight:700;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  .item__en{
+    display:block;
+    direction:ltr;
+    text-align:right;
+    margin-top:.1rem;
+    font-family:Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-size:.72rem;
+    font-weight:400;
+    letter-spacing:.03em;
+    color:var(--ink-muted);
+  }
+  .item__price{
+    flex:0 0 auto;
+    padding:.2rem .6rem;
+    border-radius:999px;
+    border:1px solid rgba(46,197,245,.55);
+    background:linear-gradient(180deg,#f4fdff 0%, var(--ice-light) 100%);
+    color:var(--ice-deep);
+    font-size:.88rem;
+    font-weight:800;
+    white-space:nowrap;
+    box-shadow:0 4px 12px -8px rgba(10,127,184,.7);
+  }
+  .item__desc{
+    margin:.45rem 0 0;
+    font-size:.88rem;
+    line-height:1.75;
+    color:var(--ink-muted);
+  }
+  .badge{
+    display:inline-block;
+    margin-top:.6rem;
+    padding:.2rem .6rem;
+    border-radius:999px;
+    border:1px solid rgba(42,208,189,.45);
+    background:linear-gradient(180deg,#f3fffd 0%, var(--mint-soft) 100%);
+    color:#0d6e65;
+    font-size:.72rem;
+    font-weight:600;
+    line-height:1.9;
+  }
+  .badge--gold{
+    border-color:rgba(46,197,245,.5);
+    background:linear-gradient(180deg,#f4fdff 0%, var(--ice-light) 100%);
+    color:#0a6a94;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer{
+    margin-top:clamp(2.5rem,7vw,4rem);
+    padding:clamp(1.75rem,5vw,2.75rem) var(--pad) 1.5rem;
+    background:
+      radial-gradient(700px 320px at 50% 0%, rgba(126,227,255,.32), transparent 70%),
+      linear-gradient(180deg,var(--frost) 0%, #e4f5ff 100%);
+    border-top:1px solid rgba(12,41,66,.10);
+  }
+  .footer__inner{max-width:var(--max);margin:0 auto}
+  .footer__brand{
+    margin:0;
+    font-size:1.15rem;
+    font-weight:800;
+    color:var(--ink);
+  }
+  .footer__grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1rem;
+    margin:1.25rem 0 0;
+  }
+  .footer__col{
+    padding:1rem;
+    background:rgba(255,255,255,.78);
+    border:1px solid var(--hairline);
+    border-radius:var(--radius);
+    box-shadow:0 6px 18px -16px rgba(10,127,184,.8);
+  }
+  .footer__label{
+    margin:0 0 .35rem;
+    font-size:.82rem;
+    font-weight:800;
+    letter-spacing:.02em;
+    color:var(--ice-deep);
+  }
+  .footer__col p,
+  .footer__col address{
+    margin:0;
+    font-size:.88rem;
+    font-style:normal;
+    line-height:1.85;
+    color:var(--ink-muted);
+  }
+  .footer__col a{
+    color:#0a7fb8;
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1px dashed rgba(46,197,245,.6);
+  }
+  .footer__col a:hover{border-bottom-style:solid}
+  .footer__note{
+    margin:1.1rem 0 0;
+    padding:.7rem .9rem;
+    font-size:.88rem;
+    color:#0d6e65;
+    background:var(--mint-soft);
+    border:1px dashed rgba(42,208,189,.45);
+    border-radius:12px;
+  }
+  .footer__copy{
+    margin:1.2rem 0 0;
+    padding-top:1rem;
+    border-top:1px solid var(--hairline);
+    font-size:.78rem;
+    line-height:2;
+    text-align:center;
+    color:var(--ink-muted);
+  }
+
+  /* ---------- Accessibility ---------- */
+  :focus-visible{
+    outline:3px solid var(--ice-deep);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{
+      animation-duration:.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.001ms !important;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .items{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  }
+  @media (max-width:720px){
+    .footer__grid{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    .filters{justify-content:flex-start}
+    .items{grid-template-columns:1fr}
+  }
+  @media (max-width:420px){
+    .item{gap:.7rem;padding:.7rem}
+    .item__media{flex:0 0 72px;width:72px;height:72px}
+    .item__top{flex-direction:column;gap:.35rem}
+    .item__price{align-self:flex-start}
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    .filters{display:none}
+    body{background:#fff}
+    .hero{background:none;border-bottom:1px solid #ddd}
+    .item,.footer__col{break-inside:avoid;box-shadow:none}
+    .item:hover{transform:none;box-shadow:none}
+  }
+  .item__media{ box-shadow: 0px 0px 15px black }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1 class="hero__brand">آبمیوه و بستنی <em>آیس لند</em></h1>
+  <hr class="hero__rule">
+  <p class="hero__tagline">طعم‌هایی که برای همیشه زیر زبانت می‌مانند :)</p>
+  <div class="hero__meta"></div>
+</header>
+
+<nav class="filters" aria-label="دسته‌بندی منو">
+  <a href="#juice">آبمیوه‌های طبیعی</a>
+  <a href="#smoothie">اسموتی و شیک</a>
+  <a href="#icecream">بستنی و ژلاتو</a>
+  <a href="#faloodeh">فالوده و نوشیدنی ملس</a>
+</nav>
+
+<main>
+
+  <!-- ===== ۱: آب‌میوه‌های طبیعی و فصلی ===== -->
+  <section id="juice" class="section">
+    <div class="section__head">
+      <h2 class="section__title">آب‌میوه‌های طبیعی و فصلی</h2>
+      <p class="section__en">Succhi Naturali</p>
+    </div>
+
+    <div class="items">
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="img/ab_havij_va_porteghal.jpg" alt="آب هویج و پرتقال تازه‌فشرده در لیوان بلند" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">آب هویج و پرتقال<span class="item__en">Carrot &amp; Orange Juice</span></h3>
+            <span class="item__price">۴۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">هویج تازه‌فشرده با کمی پرتقال و رنده‌ای زنجبیل؛ شیرین، ملایم و سرشار از ویتامین A.</p>
+          <span class="badge">بدون شکر افزوده</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="img/ab_porteghal.jpg" alt="آب پرتقال طبیعی با پالپ در لیوان" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">آب پرتقال طبیعی<span class="item__en">Fresh Orange Juice</span></h3>
+            <span class="item__price">۵۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">پرتقال‌های رسیده و پرآب جنوب، همان لحظه فشرده و روی یخ سرو می‌شود.</p>
+          <span class="badge">تازه‌فشرده</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="img/ab_sib.jpg" alt="آب سیب طبیعی زلال با برش سیب تازه" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">آب سیب طبیعی<span class="item__en">Apple Juice</span></h3>
+            <span class="item__price">۵۲٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">سیب سرخ زلال با عطر دارچین؛ سبک، خوش‌طعم و مناسب هر ساعت از روز.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="img/majoon.jpg" alt="معجون انرژی‌بخش سرخ‌رنگ با چغندر و هویج" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">معجون انرژی‌بخش<span class="item__en">Energy Mix</span></h3>
+            <span class="item__price">۶۸٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">ترکیب چغندر، هویج، سیب و لیموی تازه؛ پرانرژی، خون‌ساز و خنک.</p>
+          <span class="badge badge--gold">پیشنهاد ویژه</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="img/ab_talebi.jpg" alt="آب طالبی خنک با نعناع در لیوان" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">آب طالبی خنک<span class="item__en">Melon Cooler</span></h3>
+            <span class="item__price">۵۸٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">طالبی فصلی با برگ نعناع و آبلیمو؛ خنک‌ترین انتخاب روزهای گرم.</p>
+          <span class="badge">فصلی</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== ۲: اسموتی و شیک ===== -->
+  <section id="smoothie" class="section">
+    <div class="section__head">
+      <h2 class="section__title">اسموتی و شیک</h2>
+      <p class="section__en">Smoothies &amp; Frappé</p>
+    </div>
+
+    <div class="items">
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/strawberry-banana-smoothie.jpg" alt="اسموتی توت‌فرنگی و موز با تکه‌های میوه" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">اسموتی توت‌فرنگی و موز<span class="item__en">Berry &amp; Banana Smoothie</span></h3>
+            <span class="item__price">۸۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">توت‌فرنگی، موز یخ‌زده و ماست پرچرب؛ بافت غلیظ با شیرینی کاملاً طبیعی.</p>
+          <span class="badge">بدون شکر</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/mango-passion-smoothie.jpg" alt="اسموتی انبه و پشن‌فروت با رنگ نارنجی روشن" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">اسموتی انبه و پشن‌فروت<span class="item__en">Mango &amp; Passion Fruit</span></h3>
+            <span class="item__price">۹۲٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">انبه‌ی رسیده با پشن‌فروت و کمی لیمو؛ ترش‌وشیرین، معطر و گرمسیری.</p>
+          <span class="badge badge--gold">پرفروش</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/nut-shake.jpg" alt="شیک مغزها و خرما با خامه روی آن" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">شیک مغزها و خرما<span class="item__en">Nut &amp; Date Shake</span></h3>
+            <span class="item__price">۹۸٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">بادام، پسته، گردو و کنجد با خرمای مضافتی؛ مقوی و سیرکننده.</p>
+          <span class="badge">پروتئینی</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/kiwi-smoothie.jpg" alt="اسموتی سبز کیوی و اسپیرولینا در لیوان" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">اسموتی کیوی و اسپیرولینا<span class="item__en">Kiwi &amp; Spirulina</span></h3>
+            <span class="item__price">۸۸٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">کیوی، سیب سبز و اسپیرولینا با آب نارگیل؛ سبک، ترش و پرخاصیت.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/chocolate-shake.jpg" alt="شیک شکلات و موز با مغز خردشده" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">شیک شکلات و موز<span class="item__en">Chocolate Shake</span></h3>
+            <span class="item__price">۸۲٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">شکلات تلخ، موز و بستنی وانیلی؛ دسری سرد برای عصرهای تابستان.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="section__note">برای همه‌ی اسموتی‌ها می‌توانید جایگزین‌های گیاهی (شیر بادام، جو یا نارگیل) را بدون هزینه‌ی اضافه سفارش دهید.</p>
+  </section>
+
+  <!-- ===== ۳: بستنی و ژلاتو ===== -->
+  <section id="icecream" class="section">
+    <div class="section__head">
+      <h2 class="section__title">بستنی و ژلاتو</h2>
+      <p class="section__en">Gelati &amp; Sorbetti</p>
+    </div>
+
+    <div class="items">
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/saffron-ice-cream.jpg" alt="بستنی سنتی زعفرانی با خلال پسته" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">بستنی سنتی زعفرانی<span class="item__en">Saffron Ice Cream</span></h3>
+            <span class="item__price">۷۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">خامه‌ی تازه، زعفران دم‌کرده و تکه‌های پسته؛ همان طعم اصیل ایرانی.</p>
+          <span class="badge badge--gold">سنتی</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/pistachio-gelato.jpg" alt="ژلاتوی پسته با پسته‌ی خردشده روی آن" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">ژلاتوی پسته<span class="item__en">Pistachio Gelato</span></h3>
+            <span class="item__price">۸۸٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">پسته‌ی کاشان، شیر تازه و شکر کم؛ بافت نرم و کشسان با عطری ماندگار.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/vanilla-cone.jpg" alt="بستنی قیفی وانیل در قیف ترد" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">بستنی قیفی وانیل<span class="item__en">Vanilla Soft Serve</span></h3>
+            <span class="item__price">۴۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">بستنی نرم و خنک وانیل در قیف تازه‌پخت؛ ساده و بی‌نقص.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/chocolate-gelato.jpg" alt="ژلاتوی شکلات تلخ با سس شکلات" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">ژلاتوی شکلات تلخ<span class="item__en">Dark Chocolate Gelato</span></h3>
+            <span class="item__price">۸۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">کاکائوی ۷۰٪ با تکه‌های شکلات؛ تلخ، پررنگ و شکلاتی.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/strawberry-cone.jpg" alt="بستنی قیفی توت‌فرنگی با توت تازه" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">بستنی قیفی توت‌فرنگی<span class="item__en">Strawberry Cone</span></h3>
+            <span class="item__price">۴۸٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">توت‌فرنگی طبیعی با تکه‌های میوه؛ صورتی، خوش‌بو و خنک.</p>
+          <span class="badge">میوه‌ای</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== ۴: فالوده و نوشیدنی‌های ملس ===== -->
+  <section id="faloodeh" class="section">
+    <div class="section__head">
+      <h2 class="section__title">فالوده و نوشیدنی‌های ملس</h2>
+      <p class="section__en">Faloodeh &amp; Bibite</p>
+    </div>
+
+    <div class="items">
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/shirazi-faloodeh.jpg" alt="فالوده شیرازی با آبلیمو و خلال بادام" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">فالوده شیرازی<span class="item__en">Shirazi Faloodeh</span></h3>
+            <span class="item__price">۶۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">رشته‌های یخی فالوده با شربت آبلیمو و خلال بادام؛ خنک و ترش‌وشیرین.</p>
+          <span class="badge badge--gold">اصیل شیرازی</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/faloodeh-lime.jpg" alt="فالوده با لیمو و یک اسکوپ بستنی" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">فالوده لیمو با بستنی<span class="item__en">Faloodeh with Lime &amp; Ice Cream</span></h3>
+            <span class="item__price">۸۵٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">فالوده‌ی ترش لیمو همراه یک اسکوپ بستنی سنتی؛ ترکیب خنک و دسری.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/yogurt-mint-shake.jpg" alt="شیک ماست و نعنا با برگ نعنا تازه" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">شیک ماست و نعنا<span class="item__en">Sour Yogurt &amp; Mint Shake</span></h3>
+            <span class="item__price">۷۲٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">ماست چکیده، نعنای تازه و کمی نمک؛ ملس، گوارا و مناسب هوای گرم.</p>
+          <span class="badge">ملس</span>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/barberry-juice.jpg" alt="آب زرشک طبیعی به رنگ یاقوتی در لیوان" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">آب زرشک طبیعی<span class="item__en">Barberry Juice</span></h3>
+            <span class="item__price">۵۸٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">زرشک تازه‌ی خراسان بدون شکر افزوده؛ ترش، یاقوتی و اشتهاآور.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <figure class="item__media">
+          <img src="images/sekanjabin.jpg" alt="سکنجبین نعنا و خیار با یخ" loading="lazy" width="84" height="84">
+        </figure>
+        <div class="item__body">
+          <div class="item__top">
+            <h3 class="item__name">سکنجبین نعنا و خیار<span class="item__en">Mint &amp; Cucumber Sekanjabin</span></h3>
+            <span class="item__price">۵۰٬۰۰۰ تومان</span>
+          </div>
+          <p class="item__desc">شربت سرکه و نعنا با خیار رنده‌شده؛ ملس، خنک و ضدِ گرما.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__brand">آبمیوه و بستنی آیس لند</p>
+
+    <div class="footer__grid">
+
+      <div class="footer__col">
+        <p class="footer__label">ساعت کاری</p>
+        <p>هر روز هفته از ساعت ۹:۰۰ تا ۲۳:۰۰<br>جمعه‌ها تا ۲۴:۰۰</p>
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__label">نشانی</p>
+        <address>ایران ، استان گلستان ، علی آباد کتول</address>
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__label">ارتباط با ما</p>
+        <p>
+          <a href="#" target="_blank" rel="noopener">اینستاگرام : iceland@</a><br>
+          شماره تلفن : 09123456789
+        </p>
+      </div>
+
+    </div>
+
+    <p class="footer__note">سفارش خود را به همکاران ما اعلام فرمایید.</p>
+
+    <div class="footer__copy">
+      <p>© حق کپی رایت این سایت با مانی زرگر میباشد ©</p>
+      <p>آبمیوه و بستنی آیس لند — همه‌ی نوشیدنی‌ها و دسرها با مواد اولیه‌ی تازه و روزانه تهیه می‌شوند. قیمت‌ها به تومان است.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
